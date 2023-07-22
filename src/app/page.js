@@ -67,11 +67,11 @@ export default function Home() {
                     
                     {comentario.nombre ? comentario.nombre : "Anónimo"}
                     {/* para borrar las casillas más facilmente */}
-                    {/* <button
+                    <button
                       className="btn "
                       onClick={() => handleDelete(comentario.id)}>
                       borrar
-                    </button> */}
+                    </button>
                   </div>
                 </div>
               </div>
