@@ -4,7 +4,7 @@ import React from 'react'
 import { useState } from 'react'
 import service from "@/services/servirComentarios";
 import Swal from 'sweetalert2';
-import { Add } from '@mui/icons-material';
+
 const ModalAddNew = () => {
     // estados
     const [title, setTitle] = useState('')
