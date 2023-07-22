@@ -4,4 +4,7 @@
 
 
 
-
+*::selection {
+  background-color: #0e3702;
+  color: #fff;
+}
