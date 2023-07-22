@@ -1,20 +1,67 @@
 "use client"
+
 import React from 'react'
 import { useState } from 'react'
+import service from "@/services/servirComentarios";
+import Swal from 'sweetalert2';
+import { Add } from '@mui/icons-material';
 const ModalAddNew = () => {
-
+    // estados
     const [title, setTitle] = useState('')
     const [comment, setComment] = useState('')
+    const [name, setName] = useState('')
     const [anonymous, setAnonymous] = useState(false)
-    const handleClick = (e) => {
+
+
+    // funciones
+    const handleChangeSomething = (e, setSomething) => {
+        setSomething(e.target.value)
+    }
+    const handleAnonimous = (e) => {
         if (e.target.checked) {
  
             setAnonymous(true)
+            setName("")
         }else{
 
             setAnonymous(false)
         }
         
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const newComment = {
+            titulo: title,
+            contenido: comment,
+            nombre: name 
+        }
+
+        if (title === '' || comment === '') {
+          AddComment.close()
+          setTitle('')
+          setComment('')
+          setName('')
+          setAnonymous(false)
+          return Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'El campo de titulo y el comentario son obligatorios!',
+            timer: 2500
+           
+          })
+        }
+        
+        service.create(newComment)
+
+        
+        
+        AddComment.close()
+        setTitle('')
+        setComment('')
+        setName('')
+        setAnonymous(false)
+
+      
     }
 
 
@@ -38,19 +85,19 @@ const ModalAddNew = () => {
         <h3 className="text-lg font-bold text-center my-5">¿Algo que quieras comentar o compartir con tus compañeros?</h3>
         <div className='flex flex-col gap-2 '>
             <div className='flex gap-2 w-full items-center my-4'>
-                <span className='font-bold'>Título: </span> <input type="text" placeholder="Añade un titulo..." className="input input-bordered shadow-lg bg-transparent border-green-950 mx-auto w-full max-w-xs" />
+                <span className='font-bold'>Título: </span> <input type="text" value={title} onChange={(e) => handleChangeSomething(e, setTitle)}  placeholder="Añade un titulo..." className="input input-bordered shadow-lg bg-transparent border-green-950 mx-auto w-full max-w-xs" />
             </div>
             <div className='flex gap-2 w-full items-center my-4'>
-                <span className='font-bold'>Comentario: </span> <textarea className="textarea flex-grow textarea-bordered bg-transparent border-green-950 shadow-lg" placeholder="Escribe tu comentario..."></textarea>
+                <span className='font-bold'>Comentario: </span> <textarea value={comment} onChange={(e)=> handleChangeSomething(e, setComment)} className="textarea flex-grow textarea-bordered bg-transparent border-green-950 shadow-lg" placeholder="Escribe tu comentario..."></textarea>
             </div>
             
             {!anonymous && <div className='flex gap-2 w-full items-center my-4'>
-                <span className='font-bold'>¿Cúal es tu nombre?</span> <input type="text" placeholder="John Doe..." className="input bg-transparent shadow-lg border-green-950 input-bordered mx-auto w-full max-w-xs" />
+                <span className='font-bold'>¿Cúal es tu nombre?</span> <input value={name} onChange={(e) =>handleChangeSomething(e, setName)} type="text" placeholder="John Doe..." className="input bg-transparent shadow-lg border-green-950 input-bordered mx-auto w-full max-w-xs" />
             </div> }
              
 
             <div className='flex gap-2 w-full items-center my-4'>
-                <span> ¿ O quieres que sea anónimo?</span> <input type="checkbox" id='test' onChange={handleClick}  />
+                <span> ¿ O quieres que sea anónimo?</span> <input type="checkbox" id='test' onChange={handleAnonimous}  />
             </div>
 
             
@@ -61,18 +108,20 @@ const ModalAddNew = () => {
         
         <div className='card-actions justify-end'>
 
-        <button className="btn bg-white text-black hover:bg-green-700 duration-200 hover:text-white " onClick={() => console.log("submit")}>
+        <button type='submit' className="btn bg-white text-black hover:bg-green-700 duration-200 hover:text-white " onClick={handleSubmit}>
           Añadir
         </button> 
         </div>
 
+        
+
                      
       </form>
-      <form
-        method="dialog"
-        className="modal-backdrop">
-        <button>close</button>
-      </form>
+
+      <form method="dialog" className="modal-backdrop">
+    <button>close</button>
+  </form>
+     
     </dialog>
   </div>
   )
