@@ -1,5 +1,6 @@
 "use client";
-
+import Head from 'next/head'
+ 
 import ModalAddNew from "@/components/ModalAddNew";
 import { useState, useEffect } from "react";
 import service from "@/services/servirComentarios";
@@ -19,6 +20,9 @@ export default function Home() {
 
   return (
     <>
+    <Head>
+        <title>Colón 4.0</title>
+      </Head>
       <section className=" mt-5 flex h-full w-full flex-col items-center justify-center px-2">
         <h1 className="bg-gradient-to-r from-[#204E5C] to-green-700  bg-clip-text text-center text-4xl font-bold tracking-wide text-transparent md:text-6xl">
           ¡Bienvenidos compañeros!
