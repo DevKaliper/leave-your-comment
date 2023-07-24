@@ -6,4 +6,4 @@
 
 ![image](https://github.com/DevKaliper/leaveYourComment/assets/122651755/346dc346-9b81-43f0-a428-dad9e972fff0)
 
-
+### Para mejor experiencia sugiero usar Google Chrome. O Al menos no usar Safari
