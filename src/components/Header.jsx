@@ -2,8 +2,8 @@ import React from "react";
 
 const Header = () => {
   return (
-    <nav className="sticky left-0 top-0 z-[99999999] ">
-      <div className=" shadow-xl mx-auto mt-5 flex  h-[4rem] w-full items-center justify-between rounded-3xl bg-green-950 px-8 py-4 text-white bg-opacity-70  backdrop-blur md:w-[65%]">
+    <nav className="sticky left-0 top-0 z-[99999999] w-full  ">
+      <div className=" shadow-xl mx-auto flex  h-[4rem] w-full items-center justify-between  bg-green-950 px-8 py-9 text-white bg-opacity-70  backdrop-blur ">
         <div className="flex flex-row gap-3 min-w-full text-xl font-semibold justify-center items-center md:min-w-fit  ">
         <img src="https://cdn.discordapp.com/attachments/1125465851810820143/1132134294433845299/image.png" alt="logo" width={50} className="rounded-full" />
           Colón 4.0

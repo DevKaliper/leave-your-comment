@@ -20,6 +20,8 @@ export default function Home() {
 
   return (
     <>
+    
+
       <Head>
         <title>Colón 4.0</title>
       </Head>
@@ -37,7 +39,7 @@ export default function Home() {
           ¡Deja tu comentario!
         </p>
       </section>
-      <section className="overpx-2 mt-5 grid h-full w-full grid-cols-1 items-center justify-center gap-3  md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
+      <section className="overpx-2 mt-5 grid px-3 h-full w-full grid-cols-1 items-center justify-center gap-3  md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6">
         {comentarios.length == 0 ? (
           <h2 className="my-20 flex h-full w-[99vw] items-center justify-center text-center text-4xl font-semibold text-green-950">
             Aún no hay comentarios para mostrar... ¡Se el primero!
